@@ -222,9 +222,10 @@ ul.row {
     display: block;
 }
 
-.social-link > sqv {
+.social-link > svg {
     fill: var(--text-color);
 }
+
 
 .card-services .card-title {
     margin: 0;
