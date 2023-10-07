@@ -1,8 +1,7 @@
-/* All names */
-$list-names: julien john sam damian;
+@import '11-names.scss';
 
 @each $name in $list-names {
   .photo-#{$name} {
-    background: image-url("photos/#{$name}.jpg") no-repeat;
+    background: image-url("#{$name}.jpg") no-repeat;
   }
 }
