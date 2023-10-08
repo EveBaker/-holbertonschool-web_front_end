@@ -352,6 +352,7 @@
     padding-top: -8.5rem;
   }
 
+
   .hero-homepage{
     background-position: 75% 0;
     background-repeat: no-repeat;
@@ -360,7 +361,7 @@
   }
 
   .section-hero .section-body {
-    padding: -8.5rem;
+    padding: 10rem 4rem;
   }
 
   .section-category .section-hero{
