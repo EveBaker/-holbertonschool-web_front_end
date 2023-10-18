@@ -189,7 +189,7 @@
     white-space: nowrap;
   }
   
-  .off-screen{
+  .off-screen {
     left: -100vw;
     position: absolute;
   }
@@ -204,10 +204,10 @@
     top: 0;
     z-index: 10;
     transform: translateY(-1rem);
-    transition: transform(2s ease-in-out, opacity .2s ease-in-out);
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   }
 
-  .skip-link .focus{
+  .skip-link:focus {
     opacity: 1;
     transform: translateY(0);
   }
