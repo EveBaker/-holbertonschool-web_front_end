@@ -152,10 +152,10 @@
               <h4>Newsletter</h4>
               <p>Stay updated with our latest trends</p>
               <form action="#" method="post">
-                <lable class="visually-hidden">email</lable>
                 <div class="input-group">
-                  <input class="form-control" type="text" name="email" placeholder="Enter Email Address" id="email">
-                  <div class="input-group-btn"><a class="btn" type="submit">Validate</a></div>
+                  <label for="email" class="visually-hidden"></label>
+                  <input class="form-control" type="email" autocomplete="email" required aria-required="true" name="email" id="email">
+                  <div class="input-group-btn"><button class="btn" type="submit">Validate</button></div>
                 </div>
               </form>
             </div>
