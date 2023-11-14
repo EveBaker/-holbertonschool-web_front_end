@@ -16,3 +16,5 @@ This refers to the order in which the interpreter looks for variables. The inner
 
 <b>Higher-order functions:<br>
 Functions that return other functions.
+
+DOM Manipulation: Using JavaScript to add elements to and modify the Document Object Model (DOM) of a webpage.
