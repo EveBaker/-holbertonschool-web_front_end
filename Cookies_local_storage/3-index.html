@@ -60,7 +60,60 @@
             }
             return '';//empty string
         }
+
         
+        //show the login form
+        function showForm() {
+            let welcomeMessage = document.querySelector(".welcome-message");
+            let loginForm = document.querySelector(".login");
+
+            // Check if the welcome message exists
+            if (welcomeMessage) {
+                document.body.removeChild(welcomeMessage);
+            }
+
+            // Show the login form
+            loginForm.style.display = "block";
+        }
+
+        //hide the login form
+        function hideForm() {
+            let loginForm = document.querySelector(".login");
+            loginForm.style.display = "none";
+        }
+
+        // Function to delete cookies and show the login form
+        function deleteCookiesAndShowForm() {
+            let pastDate = new Date(0).toUTCString();
+
+            // Delete cookies
+            document.cookie = `firstname=; expires=${pastDate}; path=/;`;
+            document.cookie = `email=; expires=${pastDate}; path=/;`;
+
+            // Show the login form
+            showForm();
+        }
+
+        //show welcome message
+        function showWelcomeMessageOrForm() {
+            let firstnameCookie = getCookie("firstname");
+            let loginForm = document.querySelector(".login");
+
+            if (firstnameCookie) {
+                // User is logged in
+                document.body.innerHTML = `
+                    <h1 class="welcome-message">Welcome ${firstnameCookie}
+                        <a href="#" onclick="deleteCookiesAndShowForm()" style="font-weight: normal; font-style: italic; margin-left: 10px;">(logout)</a>
+                    </h1>`;
+            } else {
+                // User is not logged in
+                hideForm();
+                document.body.appendChild(loginForm);
+            }
+        }
+
+        // Initial call to show welcome message or login form
+        showWelcomeMessageOrForm();
     </script>
 </body>
 </html>
