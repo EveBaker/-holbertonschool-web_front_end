@@ -22,20 +22,13 @@
     <button onclick="setCookiesAndShowWelcomeMessage()">Show the cookies</button>
 
     <script type="application/javascript">
-        function setCookiesAndShowWelcomeMessage() {
+        function setCookies() {
             let firstname = document.getElementById('firstname').value;
             let email = document.getElementById('email').value;
 
-            // calculate
-            let expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + 10);
-
-            // convert exparation
-            let expires = expirationDate.toUTCString();
-
             // create
-            Cookies.set('firstname', firstname, { expires: expirationDate});
-            cookies.set('email', email, {expires: expirationDate});
+            Cookies.set('firstname', firstname, { expires: 10});
+            cookies.set('email', email, {expires: 10});
             showWelcomeMessageOrForm();
         }
 
@@ -87,33 +80,32 @@
 
         // Function to delete cookies and show the login form
         function deleteCookiesAndShowForm() {
-            Cookies.remove('firstname');
-            Cookies.remove('email');
-
-            // Show the login form
-            showForm();
-        }
-
-        //show welcome message
-        function showWelcomeMessageOrForm() {
-            let firstnameCookie = getCookie("firstname");
-            let loginForm = document.querySelector(".login");
-
-            if (firstnameCookie) {
-                // User is logged in
-                document.body.innerHTML = `
-                    <h1 class="welcome-message">Welcome ${firstnameCookie}
-                        <a href="#" onclick="deleteCookiesAndShowForm()" style="font-weight: normal; font-style: italic; margin-left: 10px;">(logout)</a>
-                    </h1>`;
-            } else {
-                // User is not logged in
-                hideForm();
-                document.body.appendChild(loginForm);
-            }
-        }
-
-        // Initial call to show welcome message or login form
-        showWelcomeMessageOrForm();
+    Cookies.remove('firstname')
+    Cookies.remove('email');
+    Cookies.remove('expire');
+    showForm();
+  }
+  function showWelcomeMessageOrForm() {
+    let firstname = getCookie('firstname');
+    if (firstname == "") {
+      showForm();
+    } else {
+      let wrap = document.createElement('div');
+      wrap.setAttribute("id", "welcome");
+      let html = `<h1>Welcome ${firstname.split('=')[1]}<a style="font-weight: 400; font-style: itali
+        margin-left: 10px;" onclick="deleteCookiesAndShowForm()">(logout)</a></h1>`;
+        wrap.innerHTML = html;
+        hideForm();
+        document.body.append(wrap);
+      }
+    }
+    function setCookiesAndShowWelcomeMessage() {
+      let cookiename = document.getElementById("firstname").value;
+      let cookiemail = document.getElementById("email").value;
+      Cookies.set('firstname', `${cookiename}`, { expires: 10 });
+      Cookies.set('email', `${cookiemail}`, { expires: 10 });
+      showWelcomeMessageOrForm();
+    }
     </script>
 </body>
 </html>
