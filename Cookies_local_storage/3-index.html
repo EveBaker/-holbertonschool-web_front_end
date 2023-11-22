@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2-index</title>
+    <title>3-index</title>
 </head>
 <body>
     <h1>Login to the website</h1>
@@ -71,6 +71,23 @@
             let formElement = document.querySelector(".login")
             formElement.style.display = "none"
             }
+
+            //deletes cookies
+            function deleteCookiesAndShowForm(){
+            const pastDate = new Date(0).toUTCString(); // makes a past date
+
+            //overwrites cookies
+            document.cookie = `firstname=; expires=${pastDate}; path=/;`;
+            document.cookie = `email=; expires=${pastDate}; path=/;`;
+            showForm();
+            }
+
+            // checking if logged in
+            function isUserLoggedIn() {
+                const authenticationToken = getAuthenticationToken();
+                return !!authenticationToken;
+            }
+
 
     </script>
 </body>
