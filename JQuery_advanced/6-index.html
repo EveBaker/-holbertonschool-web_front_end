@@ -44,19 +44,30 @@
     }
 
 
-        function createForm(form) {
-            form.append('<input type=firstName>')
-            form.append('<input type=lastName>')
-            form.append('<input type=firstname .before>')
-            form.append('<input>')
-        }
+    function createForm() {
+    //form with inputs
+    let form = $('<form>');
+    form.append('<input type="text" name="firstName">'); // First name input
+    form.append('<input type="text" name="lastName">');  // Last name input
+    form.append('<select><option value="before">Before</option><option value="after">After</option></select>'); // Select box
+    form.append('<input type="submit" value="Add Member">'); // Submit button
 
-        createFamilyTree();
-        addNewMember('Guillaume', 'Salva');
-        addNewMember('Arielle', 'Snizt');
-        addNewMember('Fanette', 'Snizt');
-        addNewMember('Gerard', 'Snizt');
-        addNewMember('Victor', 'Salva');
+    //submission
+    form.on('submit', function(event) {
+        event.preventDefault();
+        let firstName = $(this).find('input[name="firstName"]').val();
+        let lastName = $(this).find('input[name="lastName"]').val();
+        let position = $(this).find('select').val();
+        addNewMember(firstName, lastName, position);
+    });
+
+    // Add the form to the page.
+    $('body').prepend(form);
+}
+
+// Initialize functions
+createFamilyTree();
+createForm();
         </script>
         </body>
     </body>
