@@ -25,8 +25,8 @@
                 }
         
                 function queryWikipedia(search) {
-                    var url = "https://en.wikipedia.org/w/api.php"; 
-                    var params = {
+                    let url = "https://en.wikipedia.org/w/api.php"; 
+                    let params = {
                         action: "query",
                         list: "search",
                         srsearch: search,
@@ -45,7 +45,6 @@
                         })
                         .catch(function(error){console.log(error);});
                 }
-        
                 createSearchForm();
                 </script>
         
