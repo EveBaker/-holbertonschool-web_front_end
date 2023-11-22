@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8" />
-        <title>Task 7</title>
-        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-    </head>
-        <body>
-            <body>
-                <script type='application/javascript'>
-                function createSearchForm() {
-                    $('body').append(`
-                    <input type='text'>
-                    <input type='submit'>
-                    <ul></ul>
-                    `);
-                    $('input:last').click(function () {
-                        queryWikipedia($('input:first').val());
-                    })
-                }
-        
-                function addNewArticle(id, title, snippet) {
-                    $('ul').append('<li><p><span>' + id + ' - <b>' + title +
-                        '</b></span><p>' + snippet);
-                }
-        
-                function queryWikipedia(search) {
-                    let url = "https://en.wikipedia.org/w/api.php"; 
-                    let params = {
-                        action: "query",
-                        list: "search",
-                        srsearch: search,
-                        format: "json"
-                    };
-        
-                    url = url + "?origin=*";
-                    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
-        
-                    fetch(url)
+<head>
+    <meta charset="utf-8" />
+    <title>Task 8</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+</head>
+<body>
+    <script type='application/javascript'>
+        function createSearchForm() {
+            $('body').append(`
+                <input type='text'>
+                <input type='submit'>
+                <ul></ul>
+                <ul id='pagination'></ul> 
+            `);
+            $('input[type="submit"]').click(function (event) {
+                event.preventDefault();
+                queryWikipedia($('input[type="text"]').val(), 0);
+            });
+        }
+
+        function addNewArticle(id, title, snippet) {
+            $('ul:first').append('<li><p><span>' + id + ' - <b>' + title + '</b></span><p>' + snippet);
+        }
+
+        function queryWikipedia(search, offset = 0) { // Offset parameter added
+            var url = "https://en.wikipedia.org/w/api.php"; 
+            var params = {
+                action: "query",
+                list: "search",
+                srsearch: search,
+                format: "json",
+                sroffset: offset // Added offset in API request
+            };
+
+            url = url + "?origin=*";
+            Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+            fetch(url)
                 .then(function(response){return response.json();})
                 .then(function(response) {
                     $('ul:first').empty(); // Clear current results
@@ -49,10 +50,10 @@
                 .catch(function(error){console.log(error);});
         }
 
-        function buildPagination(totalItems, itemsPerPage, currentOffset) {
-            let totalPages = Math.ceil(totalItems / itemsPerPage);
-            $('#pagination').empty(); // reset
-            for(let i = 0; i < totalPages; i++) {
+        function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+            let numberOfItems = Math.ceil(numberOfItems / itemsPerPage);
+            $('#pagination').empty(); // Reset pagination
+            for (let i = 0; i < ; i++) {
                 let pageOffset = i * itemsPerPage;
                 let pageItem = $('<li style="cursor: pointer; margin-left: 10px;">' + (i + 1) + '</li>');
                 if (currentOffset === pageOffset) {
@@ -64,9 +65,8 @@
                 $('#pagination').append(pageItem);
             }
         }
-                createSearchForm();
-                </script>
-        
-            </body>
-        
-        </html>
+
+        createSearchForm();
+    </script>
+</body>
+</html>
