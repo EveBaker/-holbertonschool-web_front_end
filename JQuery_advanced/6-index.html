@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8" />
-        <title>Task 5</title>
+        <title>Task 6</title>
         <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     </head>
         <body>
@@ -30,20 +30,25 @@
             });
 
             //makes new row
-            let newRow = $('<tr>').append($('<td>').text(firstName),$('<td>').text(lastName));
-                        if (position === 'before') {
-                            $('tbody').prepend(newRow);
-                        } else {
-                $('tbody').append(newRow);
-            }
+            let newRow = $('<tr>').append(
+                $('<td>').text(firstName),
+                    $('<td>').text(lastName),
+                        removeCell
+            );
+
+            if(position === 'before'){
+            $('tbody').prepend("newRow"); //before
+            }else{
+            $('tbody').append(newRow); //after
         }
+    }
 
-        function createForm() {
-            let form = $('<form>'); //form made
-                form.append($('input type="text" name="firstName">'));
-                form.apend($('<input type="text" name="lastName">'));
 
-                let select = $('<select name="position">').append('<option value')
+        function createForm(form) {
+            form.append('<input type=firstName>')
+            form.append('<input type=lastName>')
+            form.append('<input type=firstname .before>')
+            form.append('<input>')
         }
 
         createFamilyTree();
@@ -56,4 +61,3 @@
         </body>
     </body>
 </html>
-
