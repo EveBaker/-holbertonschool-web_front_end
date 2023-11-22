@@ -18,6 +18,21 @@
             })
         }
 
+        function addNewArticle(id, title, snippet) {
+            $('ul').append('<li><p><span>' + id + '- <b>' + title +
+                '</b></span><p>' + snippet);
+
+                    function queryWikipedia(search) {
+			let url = "https://en.wikipedia.org/w/api.php"; 
+			let params = {
+				action: "query",
+				list: "search",
+				srsearch: search,
+				format: "json"
+			};
+
+
+        }
         </script>
         </body>
     </body>
