@@ -10,6 +10,13 @@
     <input type="text" id="firstname" placeholder="Firstname">
     <input type="text" id="email" placeholder="Email">
     <button onclick="setCookies()">Log me in</button><br/>
+
+    <div class="login" style="display: none;">
+        <h2></h2>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button><br/>
+    </div>
     <h1>Cookies</h1>
     <button onclick="showCookies()">Show the cookies</button>
     <script type="application/javascript">
@@ -53,6 +60,12 @@
             }
             return '';//empty string
         }
+
+        // show login form
+        function showForm() {
+        let formElement = document.querySelector(".login");
+        formElement.style.display = "block";
+    }
     </script>
 </body>
 </html>
