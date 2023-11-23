@@ -2,89 +2,31 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
-    <title>Task 9</title>
+    <title>Task 10</title>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-    <style>
-        .loading {
-            opacity: 0.2;
-        }
-    </style>
 </head>
 <body>
     <script type='application/javascript'>
-        function createSearchForm() {
-            $('body').append(`
-                <input type='text'>
-                <input type='submit'>
-                <ul></ul>
-                <ul id='pagination'></ul> 
-            `);
-            $('input[type="submit"]').click(function (event) {
-                event.preventDefault();
-                queryWikipedia($('input[type="text"]').val(), 0);
-            });
+         // Function to append a paragraph
+            function addPostRow(data) {
+            $('body').append(`<p><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>`);
         }
 
-        function addNewArticle(id, title, snippet) {
-            $('ul:first').append('<li><p><span>' + id + ' - <b>' + title + '</b></span><p>' + snippet);
-        }
-
-        function displayLoading(loading) {
-            var $ul = $('ul:first');
-            if (loading) {
-                $ul.wrap('<div class="loading"></div>');
-            } else {
-                $ul.unwrap();
-            }
-        }
-
-        function queryWikipedia(search, offset = 0) {
-            displayLoading(true); // Show loading state
-            var url = "https://en.wikipedia.org/w/api.php"; 
-            var params = {
-                action: "query",
-                list: "search",
-                srsearch: search,
-                format: "json",
-                sroffset: offset // Added offset in API request
-            };
-
-            url = url + "?origin=*";
-            Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
-
-            fetch(url)
-                .then(function(response){return response.json();})
-                .then(function(response) {
-                    displayLoading(false); // Remove loading state
-                    $('ul:first').empty(); // Clear current results
-                    var totalHits = response.query.searchinfo.totalhits;
-                    response.query.search.forEach(function ({ pageid, title, snippet }) {
-                        addNewArticle(pageid, title, snippet);
-                    });
-                    buildPagination(totalHits, 10, offset); // Call buildPagination
-                })
-                .catch(function(error){
-                    console.log(error);
-                    displayLoading(false); // Remove loading state in case of error
-                });
-        }
-
-        function buildPagination (numberOfItems, itemsPerPage, currentOffset) {
-            $("#pagination").empty();
-            for (let i = 1; i <= (numberOfItems / itemsPerPage); i++) {
-                let $li = $("<li></li>").html(i);
-                $li.css({"display": "inline",  "cursor": "pointer", "margin-left": "10px"});
-                if (currentOffset === itemsPerPage * (i - 1)) {
-                    $li.css("font-weight", "bold");
+        // Function to list posts
+        function listPosts() {
+            $.get('/posts', function(response) {
+                if (response) {
+                    response.forEach(element => addPostRow(element));
                 }
-                $("#pagination").append($li);
-            }
-            $("#pagination li").click(function() {
-                queryWikipedia($("input").first().val(), itemsPerPage * ($(this).html() - 1));
+            }).fail(function() {
+                alert('Server Error');
             });
         }
 
-        createSearchForm();
+        // Call listPosts when the page loads
+        $(document).ready(function() {
+            listPosts();
+        });
     </script>
 </body>
 </html>
