@@ -20,28 +20,19 @@
     <h1>Cookies</h1>
     <button onclick="showCookies()">Show the cookies</button>
     <script type="application/javascript">
+
         function setCookies() {
             let firstname = document.getElementById('firstname').value;
             let email = document.getElementById('email').value;
 
             // calculate
-            let expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + 10);
-
-            // convert exparation
-            let expires = expirationDate.toUTCString();
-
-            // create
-            document.cookie = `firstname=${firstname}; expires=${expires}`;
-            document.cookie = `email=${email}; expires=${expires}`;
+            Cookie.set('firstname', firstname, {expires: 10});
+            Cookie.set('email', email, {expires: 10});
+            showWelcomeMessageOrForm();
         }
 
         function showCookies() {
             let paragraph = document.createElement("p");
-
-            // get the values
-            let emailCookie = getCookie("email");
-            let firstnameCookie = getCookie("firstname");
 
             /// set the inner HTML
             paragraph.innerHTML = "Email: " + emailCookie + " - Firstname: " + firstnameCookie;
@@ -50,18 +41,7 @@
             document.body.appendChild(paragraph);
         }
 
-        function getCookie(name) {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.startsWith(name + '=')) {
-                    return cookie.substring(name.length + 1);
-                }
-            }
-            return '';//empty string
-        }
 
-        
         //show the login form
         function showForm() {
             let welcomeMessage = document.querySelector(".welcome-message");
@@ -84,19 +64,15 @@
 
         // Function to delete cookies and show the login form
         function deleteCookiesAndShowForm() {
-            let pastDate = new Date(0).toUTCString();
-
-            // Delete cookies
-            document.cookie = `firstname=; expires=${pastDate}; path=/;`;
-            document.cookie = `email=; expires=${pastDate}; path=/;`;
-
+            Cookies.remove('firstname');
+            Cookies.remove('email');
             // Show the login form
             showForm();
         }
 
         //show welcome message
         function showWelcomeMessageOrForm() {
-            let firstnameCookie = getCookie("firstname");
+            let firstnameCookie = Cookie.get("firstname");
             let loginForm = document.querySelector(".login");
 
             if (firstnameCookie) {
