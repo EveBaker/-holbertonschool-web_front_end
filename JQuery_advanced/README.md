@@ -55,10 +55,7 @@ Repo:
     Directory: JQuery_advanced
     File: 0-index.html
 
-8/8 pts
 1. Creating a DOM element
-mandatory
-Score: 100.00% (Checks completed: 100.00%)
 
 In a file 1-index.html, reuse the template you created previously.
 
@@ -80,10 +77,9 @@ Repo:
     Directory: JQuery_advanced
     File: 1-index.html
 
-12/12 pts
+
 2. Creating multiple DOM elements at once
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
 
 In a file 2-index.html, reuse the template you created previously.
 
@@ -111,10 +107,9 @@ Repo:
     Directory: JQuery_advanced
     File: 2-index.html
 
-11/11 pts
+
 3. Chain DOM elements
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
 
 In a file 3-index.html, reuse the template you created previously. Reuse also the function named createFamilyTree:
 
@@ -140,10 +135,10 @@ Repo:
     Directory: JQuery_advanced
     File: 3-index.html
 
-10/10 pts
+
 4. HTML function
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
+
 
 In a file 4-index.html, reuse the template you created in the previous task. Reuse also the function named createFamilyTree.
 
@@ -164,10 +159,9 @@ Repo:
     Directory: JQuery_advanced
     File: 4-index.html
 
-10/10 pts
 5. Click attribute and remove function
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
+
 
 In a file 5-index.html, reuse the template you created previously.
 
@@ -202,10 +196,10 @@ Repo:
     Directory: JQuery_advanced
     File: 5-index.html
 
-23/23 pts
+
 6. Val, before, and prepend functions
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
+
 
 In a file 6-index.html, reuse the template you created previously.
 
@@ -235,10 +229,9 @@ Repo:
     Directory: JQuery_advanced
     File: 6-index.html
 
-22/22 pts
+
 7. Query - Setup your dev environment
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
 
 In a file 7-index.html, reuse the template you created in the previous task
 
@@ -284,10 +277,9 @@ Repo:
     Directory: JQuery_advanced
     File: 7-index.html
 
-23/23 pts
 8. Pagination
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
+
 
 In a file 8-index.html, reuse the code from the previous task
 
@@ -325,10 +317,10 @@ Repo:
     Directory: JQuery_advanced
     File: 8-index.html
 
-18/18 pts
+
 9. Wrap/unwrap
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
+
 
 In a file 9-index.html, reuse the code from the previous task
 
@@ -358,10 +350,10 @@ Repo:
     Directory: JQuery_advanced
     File: 9-index.html
 
-11/11 pts
+
 10. Another Get API
 mandatory
-Score: 100.00% (Checks completed: 100.00%)
+
 
 Setup your dev environment
 
@@ -464,10 +456,9 @@ Repo:
     Directory: JQuery_advanced
     File: 10-index.html, db.json
 
-12/12 pts
 11. Post query
 mandatory
-Score: 5.00% (Checks completed: 5.00%)
+
 
 In a file 11-index.html, reuse the code you previously wrote
 
@@ -501,10 +492,10 @@ Repo:
     Directory: JQuery_advanced
     File: 11-index.html, db.json
 
-1/20 pts
+
 12. Delete query
 mandatory
-Score: 9.09% (Checks completed: 9.09%)
+
 
 In a file 12-index.html, reuse your code from the previous task
 
